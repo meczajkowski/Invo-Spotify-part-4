@@ -1,6 +1,33 @@
-@use './partials/faq-question-partial.scss';
+@use "./partials/faq-question-partial.scss";
+$breakpoint-mobile: 450px;
 
 .faq-component {
+  color: var(--on-background-color);
+  max-width: 772px;
 
+  @media only screen and (max-width: $breakpoint-mobile) {
+    margin: 0 12px 0 16px;
+  }
+
+  & &__title {
+    // typography starts
+    font-size: var(--font-size-l);
+    line-height: 1em;
+    font-weight: 700;
+    text-align: center;
+    // typography ends
+
+    max-width: 336px;
+    margin-inline: auto;
+    margin-bottom: 2.5rem;
+
+    @media only screen and (max-width: $breakpoint-mobile) {
+      // typography starts
+      line-height: 29px;
+      // typography ends
+
+      max-width: 257px;
+      margin-bottom: 2rem;
+    }
+  }
 }
-
