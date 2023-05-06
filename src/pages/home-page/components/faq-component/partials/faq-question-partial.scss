@@ -55,4 +55,16 @@
       margin-top: 12px;
     }
   }
+
+  &[data-question-expanded] {
+    // change the element colors
+    // for our xpanded state
+    background-color: var(--background-color-primary-hover);
+    border-color: var(--primary-color);
+
+    // show the answer
+    .faq-question-partial__answer {
+      display: block;
+    }
+  }
 }
