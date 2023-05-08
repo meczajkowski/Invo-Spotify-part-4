@@ -140,5 +140,15 @@ $breakpoint-mobile: 450px;
     .faq-question-partial__answer {
       display: block;
     }
+
+    .faq-question-partial__icon {
+      &:before {
+        transform: rotate(90deg);
+      }
+
+      &:after {
+        transform: rotate(180deg);
+      }
+    }
   }
 }
