@@ -50,6 +50,54 @@ $breakpoint-mobile: 450px;
 
   & &__icon {
     // to do for later
+    --icon-size: 13px;
+    --icon-thickness: 1px;
+    // set the icon to be a child of the question element
+    position: relative;
+
+    // set the distance between the icon and the question text
+    margin-left: 16px;
+
+    // set the size of the icon
+    width: var(--icon-size);
+    height: var(--icon-size);
+
+    // prevent the icon from shrinking when there's not enough space
+    flex-shrink: 0;
+
+    // create two pseudo-elements to make the icon (one vertical and one horizontal line)
+    &:before,
+    &:after {
+      // the content: "" rule is required in order to create an empty pseudo-element
+      // that can be styled and positioned as needed
+      content: "";
+      position: absolute;
+
+      // set the color and transition time of the icon
+      background-color: var(--primary-color);
+      transition: 0.2s;
+    }
+
+    // set the style for the vertical line of the icon
+    &:before {
+      // set the width of the line
+      width: var(--icon-thickness);
+
+      // use calc() to center the line vertically in the icon
+      margin-left: calc(((var(--icon-size) - var(--icon-thickness)) / 2));
+      height: 100%;
+    }
+
+    // set the style for the horizontal line of the icon
+    &:after {
+      // set the height of the line
+      height: var(--icon-thickness);
+
+      // use calc() to center the line horizontally in the icon
+      margin-top: calc(((var(--icon-size) - var(--icon-thickness)) / 2));
+      left: 0;
+      width: 100%;
+    }
   }
 
   & &__answer {
