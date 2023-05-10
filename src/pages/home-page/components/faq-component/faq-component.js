@@ -1,15 +1,11 @@
 export const FaqComponent = () => {
-  // Get a reference to the .faq-component element
   const faqComponent = document.querySelector(".faq-component");
-
-  // Get all .faq-question-partial elements within the .faq-component element
   const faqAllQuestions = faqComponent.querySelectorAll(
     ".faq-question-partial"
   );
 
   function listenToQuestionResize(faqQuestionToListen) {
     const faqQuestion = faqQuestionToListen[0].target;
-
     const faqAnswer = faqQuestion.querySelector(
       ".faq-question-partial__answer"
     );
@@ -20,9 +16,19 @@ export const FaqComponent = () => {
     );
   }
 
+  function foldAllSiblingQuestions(clickedQuestion) {
+    faqAllQuestions.forEach((faqQuestionToFold) => {
+      if (faqQuestionToFold != clickedQuestion) {
+        faqQuestionToFold.removeAttribute("data-question-expanded");
+      }
+    });
+  }
+
   faqAllQuestions.forEach((faqSingleQuestion) => {
     new ResizeObserver(listenToQuestionResize).observe(faqSingleQuestion);
+
     faqSingleQuestion.addEventListener("click", () => {
+      foldAllSiblingQuestions(faqSingleQuestion);
       faqSingleQuestion.toggleAttribute("data-question-expanded");
     });
   });
